@@ -25,7 +25,7 @@ private:
     TextureInfo frameInfo_;
     TextureInfo iconInfo_;
     ImVec4 barColor_;
-    D3D12_GPU_DESCRIPTOR_HANDLE srvHeapStart_;
+    D3D12_GPU_DESCRIPTOR_HANDLE srvHeapStart_{};
     SIZE_T descriptorIncrementSize_;
 };
 

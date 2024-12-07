@@ -100,6 +100,10 @@ bool Config::CheckConfig(const std::string& configFilePath) {
                 configJson["statBar"]["size"] = {{"width", 555}, {"height", 40}};
                 updated = true;
             }
+            if (!configJson["statBar"].contains("iconSize")) {
+                configJson["statBar"]["iconSize"] = 68;
+                updated = true;
+            }
             if (!configJson["statBar"].contains("hideText")) {
                 configJson["statBar"]["hideText"] = false;
                 updated = true;
@@ -201,10 +205,10 @@ void Config::LoadConfig(const std::string& configFilePath) {
 
         statBarSettings.position = ImVec2(configJson["statBar"]["position"]["x"], configJson["statBar"]["position"]["y"]);
         statBarSettings.size = ImVec2(configJson["statBar"]["size"]["width"], configJson["statBar"]["size"]["height"]);
+        statBarSettings.iconSize = configJson["statBar"]["iconSize"];
         statBarSettings.hideText = configJson["statBar"]["hideText"];
 
-        float iconWidth = statBarSettings.size.y * 1.70f;
-        effectBarIconSize = ImVec2(iconWidth, iconWidth * 0.85f);
+        effectBarIconSize = ImVec2(statBarSettings.iconSize, statBarSettings.iconSize * 0.85f);
 
     } catch (const std::exception& e) {
         Logger::Error(std::string("Config::LoadConfig - Error: ") + e.what());
@@ -214,8 +218,6 @@ void Config::LoadConfig(const std::string& configFilePath) {
 }
 
 void Config::CreateConfig(const std::string &configFilePath) {
-    Size barSize = {600, 40};
-
     try {
         nlohmann::json configJson;
 
@@ -240,6 +242,7 @@ void Config::CreateConfig(const std::string &configFilePath) {
             {"madness", true}
         };
 
+        Size barSize = {600, 40};
         configJson["statBar"]["position"]["x"] = gGameWindowSize.width - barSize.width - 5;
         configJson["statBar"]["position"]["y"] = 10;
         configJson["statBar"]["size"]["width"] = barSize.width;
@@ -250,6 +253,7 @@ void Config::CreateConfig(const std::string &configFilePath) {
         configJson["effectBar"]["position"]["y"] = 10;
         configJson["effectBar"]["size"]["width"] = barSize.width;
         configJson["effectBar"]["size"]["height"] = barSize.height;
+        configJson["effectBar"]["iconSize"] = 68;
         configJson["effectBar"]["hideText"] = false;
 
         std::ofstream configFile(configFilePath);

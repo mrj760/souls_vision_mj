@@ -52,12 +52,12 @@ void EffectBar::Render(const BarSettings &settings, float paddingY, int decimals
     ImVec2 iconSize = Config::effectBarIconSize;
 
     ImVec2 barSize = ImVec2(
-            settings.size.x * 0.876,
-            settings.size.y * 0.73
+            settings.size.x * 0.876f,
+            settings.size.y * 0.73f
     );
     ImVec2 barPosition = ImVec2(
-            iconSize.x - (iconSize.x * 0.14),
-            paddingY + (iconSize.y / 2) - (barSize.y / 2)
+            iconSize.x - (iconSize.x * 0.14f),
+            paddingY + (iconSize.y / 2.f) - (barSize.y / 2.f)
     );
     ImVec2 uv0 = ImVec2(0.0f, 0.0f);
     ImVec2 uv1 = ImVec2(percentage, 1.0f);
@@ -79,8 +79,8 @@ void EffectBar::Render(const BarSettings &settings, float paddingY, int decimals
     );
     ImGui::PushClipRect(clipMin, clipMax, true);
     ImVec2 edgeSize = ImVec2(
-            (float)settings.size.x * 0.2f,
-            (float)settings.size.y * 0.75f
+            settings.size.x * 0.2f,
+            settings.size.y * 0.75f
     );
     ImVec2 edgePosition = ImVec2(
             barPosition.x + (barSize.x * percentage) - (edgeSize.x * 0.92f),
@@ -91,8 +91,8 @@ void EffectBar::Render(const BarSettings &settings, float paddingY, int decimals
     ImGui::PopClipRect();
 
     ImVec2 framePosition = ImVec2(
-            iconSize.x - (iconSize.x * 0.14),
-            paddingY + (iconSize.y / 2) - (settings.size.y / 2)
+            iconSize.x - (iconSize.x * 0.14f),
+            paddingY + (iconSize.y / 2.f) - (settings.size.y / 2.f)
     );
     ImVec2 frameSize = ImVec2(
             settings.size.x - iconSize.x,

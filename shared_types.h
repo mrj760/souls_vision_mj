@@ -30,12 +30,13 @@ struct TextureInfo {
     int index = -1;
     int width = 0;
     int height = 0;
-    D3D12_CPU_DESCRIPTOR_HANDLE srvCpuHandle;
+    D3D12_CPU_DESCRIPTOR_HANDLE srvCpuHandle{};
 };
 
 struct BarSettings {
     ImVec2 position;
     ImVec2 size;
+    float iconSize;
     float currentValue = 0;
     float maxValue = 1;
     bool hideText;
@@ -57,10 +58,10 @@ struct BarVisibility {
 };
 
 struct BarConfig {
-    BarType type;
-    float currentValue;
-    float maxValue;
-    const char* textureName;
+    BarType type{};
+    float currentValue{};
+    float maxValue{};
+    const char* textureName{};
     ImColor barColor = IM_COL32(255, 255, 255, 255);
     int decimals = 0;
     bool isEffect = false;
@@ -71,7 +72,7 @@ struct BarToRender {
     BarSettings settings;
     TextureInfo textureInfo;
     BarConfig config;
-    ImU32 barColor;
+    ImU32 barColor{};
     int decimals = 0;
 };
 
