@@ -4,9 +4,9 @@ project(souls_vision)
 set(CMAKE_CXX_STANDARD 23)
 
 # Define the path to the game and mods folder
-set(GAME_DIR "C:/Program Files (x86)/Steam/steamapps/common/ELDEN RING/Game")
+set(GAME_DIR "O:/SteamLibrary/steamapps/common/ELDEN RING/Game")
 set(MODS_DIR "${GAME_DIR}/mods")
-set(GAME_EXE "ersc_launcher.exe")
+set(GAME_EXE "O:/SteamLibrary/steamapps/common/ELDEN RING/_Reforged/internals/launcher/ReforgedLauncher.exe")
 
 file(COPY ${CMAKE_SOURCE_DIR}/sv_assets DESTINATION ${CMAKE_BINARY_DIR})
 file(COPY ${CMAKE_SOURCE_DIR}/fonts DESTINATION ${CMAKE_BINARY_DIR})

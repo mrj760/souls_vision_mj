@@ -3,6 +3,7 @@
 //
 
 #include "effect_bar.h"
+#include <format>
 #include "overlay.h"
 #include "util.h"
 #include "logger.h"

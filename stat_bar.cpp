@@ -3,6 +3,7 @@
 //
 
 #include "stat_bar.h"
+#include <format>
 #include "overlay.h"
 #include "logger.h"
 #include "util.h"
